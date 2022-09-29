@@ -1,5 +1,5 @@
 # OpenSky project
-![img.png](img.png)
+![alt text]('https://play.google.com/store/apps/details?id=com.openskycc.mobile&hl=ru&gl=US')
 
 The platform is implemented using following tech stacks:
 * ReactJS
