@@ -1,17 +1,16 @@
 import React, {useEffect, useState} from 'react';
 import './Dashboard.css';
 import axios from "axios";
-import Arriving from "./Arriving";
-import Departure from "./Departing";
+import FlightStats from "./FlightStats";
 import dayjs from 'dayjs'
 import { FlightInterface } from "../../interfaces/interfaces";
 
 const DAY_IN_SECONDS = 60 * 60 * 24;
-const HOUR_IN_SECONDS = 60 * 60;
+const HOUR_IN_SECONDS = 60 * 60 * 2;
 
 const Dashboard = () => {
     const [loading, setLoading] = useState(false);
-    const begin = Math.floor(Date.now() / 1000) - 2 * DAY_IN_SECONDS
+    const begin = Math.floor(Date.now() / 1000) - 3 * DAY_IN_SECONDS
     const end = begin + HOUR_IN_SECONDS;
     const [flights, setFlights] = useState<FlightInterface[]>([]);
 
@@ -35,10 +34,10 @@ const Dashboard = () => {
             <td>{flight.estDepartureAirport}</td>
             <td>{dayjs(begin * 1000).format('H:mm A Z')}</td>
             <td>
-                <Arriving airportCode={flight.estDepartureAirport} begin={begin} end={end}/>
+                <FlightStats airportCode={flight.estDepartureAirport} begin={begin} end={end} type={'arrival'}/>
             </td>
             <td>
-                <Departure airportCode={flight.estDepartureAirport} begin={begin} end={end}/>
+                <FlightStats airportCode={flight.estDepartureAirport} begin={begin} end={end} type={'departure'}/>
             </td>
         </tr>
     ));

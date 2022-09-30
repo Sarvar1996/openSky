@@ -17,4 +17,5 @@ export interface IProps {
     airportCode: string;
     begin: number;
     end: number;
+    type: string;
 }
